@@ -36,13 +36,6 @@ export class ApplicationLibraryComponent implements OnInit, AfterViewInit {
 
     onTypeChanged(type: String): void {
         this.selectedType = type;
-        // if (type === 'ALL') {
-        //     this.appLibService.getAllAppLibs()
-        //         .then(response => this.appLibs = response as ApplicationLibrary[]);
-        // } else {
-        //     this.appLibService.getAppLibsByType(type)
-        //         .then(response => this.appLibs = response as ApplicationLibrary[]);
-        // }
         this.searchTerms.next([this.selectedType, this.inputedTerm]);
     }
 
@@ -52,8 +45,6 @@ export class ApplicationLibraryComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-        // this.appLibService.getAllAppLibs()
-        //     .then(response => this.appLibs = response as ApplicationLibrary[]);
         this.appLibService.getTypes()
             .then(response => this.types = response as String[]);
 
