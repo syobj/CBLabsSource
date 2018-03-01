@@ -1,0 +1,55 @@
+
+<div class="box-right-content">
+    <!--搜索栏-->
+    <div class="search">
+        <div class="search-input">
+            <input type="type" value="" #searchBox (keyup)="search(searchBox.value)" />
+            <p><img src="../../assets/images/search.png" alt=""></p>
+        </div>
+        <div class="search-add">
+            <a href="#"><p><img src="../../assets/images/add.png" alt=""></p>&nbsp;PUBLISH NEW LIBRARY</a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="searth-border"></div>
+    </div>
+    <!--子菜单-->
+    <div id="content">
+        <div class="filters demo1">
+            <div class="filter menu-submenu tabs tabs_default">
+                <ul class="horizontal">
+                    <li (click)="onTypeChanged('ALL')" [class.xiao]="selectedType === 'ALL'"><a href="javascript:void(0);">ALL</a></li>
+                    <li *ngFor="let type of types" (click)="onTypeChanged(type)" [class.xiao]="selectedType === type"><a href="javascript:void(0);">{{type}}</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="container">
+                <ul>
+                    <li class="cars" *ngFor="let appLib of appLibs | async">
+                        <a href="#">
+                            <div class="container-content">
+                                <div class="container-content-img"><img src="../../assets/images/{{appLib.imgurl}}" alt="" /></div>
+                                <div class="container-content-text">
+                                    <p>{{appLib.name}}</p>
+                                    <div>{{appLib.author}}</div>
+                                    <span>{{appLib.description}}</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="container-content-bottom">
+                                <p class="container-content-bottom-p">
+                                    <span style="color:#e74c3c;font-size:20px;">{{'★★★★★' | slice:0:appLib.vote}}{{'☆☆☆☆☆' | slice:0:5-appLib.vote}}</span>
+                                </p>
+                                <p>
+                                    <span>Category : {{appLib.category}}</span>
+                                    <span>Type : {{appLib.type}}</span>
+                                </p>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <div style="clear:both;"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
