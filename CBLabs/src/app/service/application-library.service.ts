@@ -9,6 +9,9 @@ import { ApplicationLibrary } from '../model/application-library';
 
 @Injectable()
 export class ApplicationLibraryService {
+    // static SERVER_INFO = 'http://localhost:8080';
+    static SERVER_INFO = '';
+
     private requestHeaders = new Headers();
 
     constructor(private http: Http) {
@@ -18,14 +21,14 @@ export class ApplicationLibraryService {
     }
 
     getTypes(): Promise<String[]> {
-        const getTypesUrl = '/api/getTypes';
+        const getTypesUrl = `${ApplicationLibraryService.SERVER_INFO}/api/getTypes`;
         return this.http.get(getTypesUrl, {headers: this.requestHeaders})
             .toPromise()
             .then(response => response.json() as String[]);
     }
 
     search(type: String, term: String): Observable<ApplicationLibrary[]> {
-        const searchUrl = `/api/search?type=${type}&term=${term}`;
+        const searchUrl = `${ApplicationLibraryService.SERVER_INFO}/api/search?type=${type}&term=${term}`;
         return this.http.get(searchUrl, {headers: this.requestHeaders})
                         .map(response => response.json() as ApplicationLibrary[]);
     }
