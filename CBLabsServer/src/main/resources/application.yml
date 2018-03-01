@@ -1,0 +1,23 @@
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: true
+  thymeleaf:
+    mode: LEGACYHTML5
+    encoding: utf-8
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.193:3306/test1?characterEncoding=utf-8&useSSL=false&autoReconnect=true&autoRecconnectForPools=true
+    username: root
+    password: sy_12345
+server:
+  port: 8080
+  context-path: /
+  error:
+    whitelabel:
+      enabled: false
+      
+mybatis:
+  type-aliases-package: com.cblabs.server.model
