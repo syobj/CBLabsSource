@@ -41,7 +41,7 @@ export class ApplicationLibraryComponent implements OnInit, AfterViewInit {
 
     search(term: String): void {
         this.inputedTerm = term;
-        this.searchTerms.next([this.selectedType, term]);
+        this.searchTerms.next([this.selectedType, this.inputedTerm]);
     }
 
     ngOnInit(): void {
